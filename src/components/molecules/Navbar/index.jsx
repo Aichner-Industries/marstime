@@ -53,9 +53,7 @@ class Navbar extends React.Component {
           <MDBContainer>
             <MDBNavbarBrand href="/" className="py-0 font-weight-bold">
               <Logo style={{ height: "2.5rem", width: "2.5rem" }} />
-              <strong className="align-middle">
-                MDB React Firebase Template
-              </strong>
+              <strong className="align-middle">MARS TIME</strong>
             </MDBNavbarBrand>
             <MDBNavbarToggler
               onClick={this.toggleCollapse("mainNavbarCollapse")}
@@ -80,9 +78,7 @@ class Navbar extends React.Component {
                     exact
                     to="/login"
                     onClick={this.closeCollapse("mainNavbarCollapse")}
-                  >
-                    <strong>Login</strong>
-                  </MDBNavLink>
+                  ></MDBNavLink>
                 </MDBNavItem>
               </MDBNavbarNav>
             </MDBCollapse>
