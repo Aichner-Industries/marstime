@@ -8,20 +8,13 @@ import { Route, Switch } from "react-router-dom";
 /**
  * HomePage: A basic template page
  */
-import {
-  HomePage,
-  MessagePage,
-  LoginPage,
-  ProfilePage,
-} from "./components/pages";
+import { HomePage, MessagePage } from "./components/pages";
 
 class Routes extends React.Component {
   render() {
     return (
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/profile" component={ProfilePage} />
         <Route
           exact
           path="/about"
