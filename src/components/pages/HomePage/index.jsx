@@ -74,7 +74,6 @@ class HomePage extends React.Component {
             <MDBRow>
               <MDBCol md="12" className="mt-4">
                 <p className="text-center text-muted mb-1"></p>
-
                 <hr className="my-5" />
               </MDBCol>
             </MDBRow>
