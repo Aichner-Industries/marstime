@@ -17,6 +17,8 @@ import {
   MDBCardTitle,
   MDBCardImage,
   MDBCardText,
+  MDBView,
+  MDBSimpleChart,
 } from "mdbreact";
 
 //> Images
@@ -47,9 +49,10 @@ class HomePage extends React.Component {
   }
 
   render() {
+    console.log(this.state.time);
     return (
       <>
-        <MDBEdgeHeader color="bg-red" className="sectionPage" />
+        <MDBEdgeHeader color="red darken-4" className="sectionPage" />
         <div className="mt-3 mb-5">
           <MDBFreeBird>
             <MDBRow>
@@ -59,6 +62,22 @@ class HomePage extends React.Component {
               >
                 <MDBCardBody className="text-center">
                   <h2 className="h2-responsive mb-4">
+                    <MDBSimpleChart
+                      width={250}
+                      height={250}
+                      strokeWidth={3}
+                      percent={56}
+                      strokeColor={
+                        this.state.time
+                          ? parseInt(this.state.time.split(":")[0]) < 16
+                            ? "#4FB64E"
+                            : "#ff0000"
+                          : "#0000ff"
+                      }
+                      labelFontWeight="300"
+                      labelFontSize="0"
+                      labelColor="#000"
+                    />
                     <div className="clock">
                       <h3>Coordinated Mars Time</h3>
                       <div className="time mtc">
