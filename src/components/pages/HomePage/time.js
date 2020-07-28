@@ -5,39 +5,50 @@
 
 // Difference between TAI and UTC. This value should be
 // updated each time the IERS announces a leap second.
-var tai_offset = 37;
+const tai_offset = 37;
 
 // Last time the above value changed.
-var last_leap_second = "1 January 2017";
+const last_leap_second = "1 January 2017";
 
 function cos(deg) {
   return Math.cos((deg * Math.PI) / 180);
 }
+
 function sin(deg) {
   return Math.sin((deg * Math.PI) / 180);
 }
+
 function h_to_hms(h) {
   let x = h * 3600;
   let hh = Math.floor(x / 3600);
+
   if (hh < 10) hh = "0" + hh;
   let y = x % 3600;
+
   let mm = Math.floor(y / 60);
   if (mm < 10) mm = "0" + mm;
+
   let ss = Math.round(y % 60);
+
   if (ss < 10) ss = "0" + ss;
+
   return hh + ":" + mm + ":" + ss;
 }
+
 function add_commas(n) {
   n += "";
   let x = n.split(".");
   let x1 = x[0];
   let x2 = x.length > 1 ? "." + x[1] : "";
   let rgx = /(\d+)(\d{3})/;
+
   while (rgx.test(x1)) {
     x1 = x1.replace(rgx, "$1" + "," + "$2");
   }
+
   return x1 + x2;
 }
+
 function within_24(n) {
   if (n < 0) {
     n += 24;
