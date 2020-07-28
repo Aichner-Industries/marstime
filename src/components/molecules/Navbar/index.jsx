@@ -73,13 +73,6 @@ class Navbar extends React.Component {
                     <strong>Home</strong>
                   </MDBNavLink>
                 </MDBNavItem>
-                <MDBNavItem>
-                  <MDBNavLink
-                    exact
-                    to="/login"
-                    onClick={this.closeCollapse("mainNavbarCollapse")}
-                  ></MDBNavLink>
-                </MDBNavItem>
               </MDBNavbarNav>
             </MDBCollapse>
           </MDBContainer>
