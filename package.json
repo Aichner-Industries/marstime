@@ -8,6 +8,7 @@
     "gh-pages": "^2.2.0",
     "mdbreact": "mdbreact-4.26.1.tgz",
     "node-sass": "^4.13.0",
+    "react-dark-mode-toggle": "0.0.9",
     "react-router-dom": "^5.0.1"
   },
   "repository": {
