@@ -32,6 +32,9 @@ import Projects from "../../../assets/content/projects.jpg";
 // Mars Time
 import { getDate, getTime, getGeneral } from "./time";
 
+// Dark Mode toggle
+import DarkModeToggle from "react-dark-mode-toggle";
+
 //> CSS
 import "./HomePage.scss";
 //#endregion
@@ -46,6 +49,24 @@ class HomePage extends React.Component {
         this.setState({ time: getTime() });
       });
     }
+  }
+
+  constructor(props) {
+    super(props);
+    this.handleMouseHover = this.handleMouseHover.bind(this);
+    this.state = {
+      isHovering: false,
+    };
+  }
+
+  handleMouseHover() {
+    this.setState(this.toggleHoverState);
+  }
+
+  toggleHoverState(state) {
+    return {
+      isHovering: !state.isHovering,
+    };
   }
 
   render() {
@@ -63,14 +84,13 @@ class HomePage extends React.Component {
                 <MDBCardBody className="text-center">
                   <h2 className="h2-responsive mb-4">
                     <MDBSimpleChart
-                      width={250}
-                      height={250}
-                      strokeWidth={3}
-                      percent={56}
+                      width={300}
+                      height={300}
+                      strokeWidth={20}
                       strokeColor={
                         this.state.time
                           ? parseInt(this.state.time.split(":")[0]) < 16
-                            ? "#4FB64E"
+                            ? "#ffcd6b"
                             : "#ff0000"
                           : "#0000ff"
                       }
@@ -78,12 +98,35 @@ class HomePage extends React.Component {
                       labelFontSize="0"
                       labelColor="#000"
                     />
-                    <div className="clock">
-                      <h3>Coordinated Mars Time</h3>
-                      <div className="time mtc">
+                    <div
+                      onMouseOver={this.handleMouseHover} //need to find better solution
+                      onMouseLeave={this.handleMouseHover}
+                      className="clock"
+                    >
+                      <h3
+                        onMouseOver={this.handleMouseHover}
+                        onMouseLeave={this.handleMouseHover}
+                      >
+                        Coordinated Mars Time
+                      </h3>
+                      <div
+                        onMouseOver={this.handleMouseHover}
+                        onMouseLeave={this.handleMouseHover}
+                        className="time mtc"
+                      >
                         {this.state.time && this.state.time}
                       </div>
                     </div>
+                    {this.state.isHovering && (
+                      <div className="hover-expl">
+                        Time on Mars is easily divided into days based on its
+                        rotation rate and years based on its orbit. Sols, or
+                        Martian solar days, are only 39 minutes and 35 seconds
+                        longer than Earth days, and there are 668 sols (687
+                        Earth days) in a Martian year. For convenience, sols are
+                        divided into a 24-hour clock.
+                      </div>
+                    )}
                   </h2>
                 </MDBCardBody>
               </MDBCol>
