@@ -10,7 +10,7 @@ import { BrowserRouter as Router } from "react-router-dom";
  * Footer: Global Footer
  * Navbar: Global navigation bar
  */
-import { Footer, Navbar } from "./components/molecules";
+import { Footer } from "./components/molecules";
 // Starts the page on top when reloaded or redirected
 import { ScrollToTop } from "./components/atoms";
 
@@ -25,7 +25,6 @@ class App extends React.Component {
       <Router>
         <ScrollToTop>
           <div className="flyout">
-            <Navbar />
             <main>
               <Routes />
             </main>
