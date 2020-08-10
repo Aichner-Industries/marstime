@@ -51,7 +51,7 @@ class HomePage extends React.Component {
 
     // Get minutes every minute
     setInterval(() => {
-      this.setState({ minutes: getMinutes() });
+      this.setState({ minutes: getMinutes(), date: getDate() });
     }, 60000);
   }
 
@@ -59,6 +59,7 @@ class HomePage extends React.Component {
     this.setState({
       time: getTime(),
       minutes: getMinutes(),
+      date: getDate(),
     });
   };
 
@@ -110,6 +111,14 @@ class HomePage extends React.Component {
                         <p className="lead text-muted mb-0">
                           Coordinated Mars Time
                         </p>
+                      </div>
+                    </MDBCol>
+                    <MDBCol lg="5">
+                      <div className="clock border mb-4 py-3">
+                        <p className="lead h3-responsive font-weight-bold mb-0">
+                          {this.state.date && this.state.date}
+                        </p>
+                        <p className="lead text-muted mb-0">Mars Sol Date</p>
                       </div>
                     </MDBCol>
                   </MDBRow>
