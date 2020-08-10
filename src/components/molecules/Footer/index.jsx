@@ -13,7 +13,7 @@ import { MDBFooter, MDBRow, MDBCol, MDBContainer, MDBIcon } from "mdbreact";
 import "./footer.scss";
 
 //> Images
-import logoImg from "../../../assets/agency-small.png";
+import logoImg from "../../../assets/content/marstime.png";
 //#endregion
 
 //#region > Components
@@ -63,8 +63,7 @@ class Footer extends React.Component {
         <div className="footer-copyright text-center py-3">
           <MDBContainer fluid>
             <div>
-              &copy; {new Date().getFullYear()} Copyright: Werbeagentur
-              Christian Aichner
+              &copy; {new Date().getFullYear()} Copyright: Christian Aichner
               <p className="my-2 font-weight-bold">
                 Made with
                 <i

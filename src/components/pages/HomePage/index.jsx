@@ -23,21 +23,14 @@ import {
   MDBCardText,
   MDBView,
   MDBSimpleChart,
+  MDBMask,
 } from "mdbreact";
 
-//> Images
-// Logo of MDB React
-import MDBLogo from "../../../assets/mdb-react-small.png";
-// Logo of Advertisement Agency Christian Aichner
-import AgencyLogo from "../../../assets/agency-small.png";
-// Image of someone coding
-import Projects from "../../../assets/content/projects.jpg";
-
-// Mars Time
+//> Mars Time helper
 import { getDate, getTime, getMinutes, getGeneral } from "./time";
 
-// Dark Mode toggle
-import DarkModeToggle from "react-dark-mode-toggle";
+//> Images
+import logoImg from "../../../assets/content/marstime-white.png";
 
 //> CSS
 import "./HomePage.scss";
@@ -94,39 +87,32 @@ class HomePage extends React.Component {
 
     return (
       <>
-        <MDBEdgeHeader color="red darken-4" className="sectionPage" />
+        <MDBView className="sectionPage">
+          <MDBEdgeHeader />
+          <MDBMask overlay="black-light" className="d-flex flex-center">
+            <img src={logoImg} alt="Marstime Logo" />
+          </MDBMask>
+        </MDBView>
         <div className="mt-3 mb-5">
           <MDBFreeBird>
             <MDBRow>
-              <MDBCol
-                md="10"
-                className="mx-auto float-none white py-2 px-2 border"
-              >
+              <MDBCol md="10" className="mx-auto float-none white py-2 px-2">
                 <MDBCardBody className="text-center">
-                  <h2 className="h2-responsive mb-4">
-                    <SemiCircleProgressBar
-                      percentage={(100 / 1477) * this.state.minutes}
-                    />
-                    <div
-                      onMouseOver={this.handleMouseHover} //need to find better solution
-                      onMouseLeave={this.handleMouseHover}
-                      className="clock"
-                    >
-                      <h3
-                        onMouseOver={this.handleMouseHover}
-                        onMouseLeave={this.handleMouseHover}
-                      >
-                        Coordinated Mars Time
-                      </h3>
-                      <div
-                        onMouseOver={this.handleMouseHover}
-                        onMouseLeave={this.handleMouseHover}
-                        className="time mtc"
-                      >
-                        {this.state.time && this.state.time}
+                  <SemiCircleProgressBar
+                    percentage={(100 / 1477) * this.state.minutes}
+                  />
+                  <MDBRow className="justify-content-center mt-4">
+                    <MDBCol lg="5">
+                      <div className="clock border mb-4 py-3">
+                        <p className="lead h3-responsive font-weight-bold mb-0">
+                          {this.state.time && this.state.time}
+                        </p>
+                        <p className="lead text-muted mb-0">
+                          Coordinated Mars Time
+                        </p>
                       </div>
-                    </div>
-                  </h2>
+                    </MDBCol>
+                  </MDBRow>
                 </MDBCardBody>
               </MDBCol>
             </MDBRow>
@@ -135,7 +121,6 @@ class HomePage extends React.Component {
             <MDBRow>
               <MDBCol md="12" className="mt-4">
                 <p className="text-center text-muted mb-1"></p>
-                <hr className="my-5" />
               </MDBCol>
             </MDBRow>
           </MDBContainer>

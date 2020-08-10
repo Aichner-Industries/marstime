@@ -23,8 +23,17 @@ a.border.nav-link.border-light.rounded.mr-1:hover {
 }
 .sectionPage {
   position: relative;
-  top: -15px;
-  margin-bottom: -125px;
+  margin-bottom: -100px;
+
+  .edge-header {
+    background-image: url("../../../assets/bg/bg.jpg");
+    background-size: cover;
+    background-position: center center;
+  }
+
+  img {
+    margin-top: -80px;
+  }
 }
 
 .home-feature-box .fa {
@@ -52,10 +61,7 @@ a.border.nav-link.border-light.rounded.mr-1:hover {
 }
 
 .clock {
-  background: #e5e5e5;
-  width: 250px;
-  margin: 30px auto;
-  padding: 5px 10px;
+  border-radius: 0.4rem;
 }
 
 .hover-expl {
