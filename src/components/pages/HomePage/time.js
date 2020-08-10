@@ -142,6 +142,8 @@ function getData(type) {
   switch (type) {
     case "time":
       return h_to_hms(mtc);
+    case "minutes":
+      return Math.round(mtc * 60);
     case "date":
       return add_commas(msd.toFixed(5));
     case "angle":
@@ -154,6 +156,11 @@ function getData(type) {
 // General getter with dynamic result
 export function getGeneral(type) {
   return getData(type);
+}
+
+// Get minutes of time
+export function getMinutes() {
+  return getData("minutes");
 }
 
 // Get the universal Mars time

@@ -3,6 +3,10 @@
 // Contains all the functionality necessary to define React components
 import React from "react";
 
+//> Additional
+// Progress bar component in the shape of a semicircle
+import SemiCircleProgressBar from "react-progressbar-semicircle";
+
 //> MDB
 // "Material Design for Bootstrap" is a great UI design framework
 import {
@@ -30,7 +34,7 @@ import AgencyLogo from "../../../assets/agency-small.png";
 import Projects from "../../../assets/content/projects.jpg";
 
 // Mars Time
-import { getDate, getTime, getGeneral } from "./time";
+import { getDate, getTime, getMinutes, getGeneral } from "./time";
 
 // Dark Mode toggle
 import DarkModeToggle from "react-dark-mode-toggle";
@@ -41,19 +45,35 @@ import "./HomePage.scss";
 
 //#region > Components
 class HomePage extends React.Component {
-  state = {};
+  state = { minutes: 0 };
 
   componentDidMount() {
-    {
-      setInterval(() => {
-        this.setState({ time: getTime() });
-      });
-    }
+    // Initial
+    this.init();
+
+    // Get time every 250ms
+    setInterval(() => {
+      this.setState({ time: getTime() });
+    }, 250);
+
+    // Get minutes every minute
+    setInterval(() => {
+      this.setState({ minutes: getMinutes() });
+    }, 60000);
   }
+
+  init = () => {
+    this.setState({
+      time: getTime(),
+      minutes: getMinutes(),
+    });
+  };
 
   constructor(props) {
     super(props);
+
     this.handleMouseHover = this.handleMouseHover.bind(this);
+
     this.state = {
       isHovering: false,
     };
@@ -71,6 +91,7 @@ class HomePage extends React.Component {
 
   render() {
     console.log(this.state.time);
+
     return (
       <>
         <MDBEdgeHeader color="red darken-4" className="sectionPage" />
@@ -83,20 +104,8 @@ class HomePage extends React.Component {
               >
                 <MDBCardBody className="text-center">
                   <h2 className="h2-responsive mb-4">
-                    <MDBSimpleChart
-                      width={300}
-                      height={300}
-                      strokeWidth={20}
-                      strokeColor={
-                        this.state.time
-                          ? parseInt(this.state.time.split(":")[0]) < 16
-                            ? "#ffcd6b"
-                            : "#ff0000"
-                          : "#0000ff"
-                      }
-                      labelFontWeight="300"
-                      labelFontSize="0"
-                      labelColor="#000"
+                    <SemiCircleProgressBar
+                      percentage={(100 / 1477) * this.state.minutes}
                     />
                     <div
                       onMouseOver={this.handleMouseHover} //need to find better solution
@@ -117,16 +126,6 @@ class HomePage extends React.Component {
                         {this.state.time && this.state.time}
                       </div>
                     </div>
-                    {this.state.isHovering && (
-                      <div className="hover-expl">
-                        Time on Mars is easily divided into days based on its
-                        rotation rate and years based on its orbit. Sols, or
-                        Martian solar days, are only 39 minutes and 35 seconds
-                        longer than Earth days, and there are 668 sols (687
-                        Earth days) in a Martian year. For convenience, sols are
-                        divided into a 24-hour clock.
-                      </div>
-                    )}
                   </h2>
                 </MDBCardBody>
               </MDBCol>
