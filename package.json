@@ -6,8 +6,10 @@
   "homepage": ".",
   "dependencies": {
     "gh-pages": "^2.2.0",
-    "mdbreact": "^4.25.5",
+    "mdbreact": "^4.26.1",
     "node-sass": "^4.13.0",
+    "react-dark-mode-toggle": "0.0.9",
+    "react-progressbar-semicircle": "^1.2.1",
     "react-router-dom": "^5.0.1"
   },
   "repository": {

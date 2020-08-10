@@ -3,6 +3,10 @@
 // Contains all the functionality necessary to define React components
 import React from "react";
 
+//> Additional
+// Progress bar component in the shape of a semicircle
+import SemiCircleProgressBar from "react-progressbar-semicircle";
+
 //> MDB
 // "Material Design for Bootstrap" is a great UI design framework
 import {
@@ -17,6 +21,8 @@ import {
   MDBCardTitle,
   MDBCardImage,
   MDBCardText,
+  MDBView,
+  MDBSimpleChart,
 } from "mdbreact";
 
 //> Images
@@ -28,7 +34,10 @@ import AgencyLogo from "../../../assets/agency-small.png";
 import Projects from "../../../assets/content/projects.jpg";
 
 // Mars Time
-import { getDate, getTime, getGeneral } from "./time";
+import { getDate, getTime, getMinutes, getGeneral } from "./time";
+
+// Dark Mode toggle
+import DarkModeToggle from "react-dark-mode-toggle";
 
 //> CSS
 import "./HomePage.scss";
@@ -36,20 +45,56 @@ import "./HomePage.scss";
 
 //#region > Components
 class HomePage extends React.Component {
-  state = {};
+  state = { minutes: 0 };
 
   componentDidMount() {
-    {
-      setInterval(() => {
-        this.setState({ time: getTime() });
-      });
-    }
+    // Initial
+    this.init();
+
+    // Get time every 250ms
+    setInterval(() => {
+      this.setState({ time: getTime() });
+    }, 250);
+
+    // Get minutes every minute
+    setInterval(() => {
+      this.setState({ minutes: getMinutes() });
+    }, 60000);
+  }
+
+  init = () => {
+    this.setState({
+      time: getTime(),
+      minutes: getMinutes(),
+    });
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.handleMouseHover = this.handleMouseHover.bind(this);
+
+    this.state = {
+      isHovering: false,
+    };
+  }
+
+  handleMouseHover() {
+    this.setState(this.toggleHoverState);
+  }
+
+  toggleHoverState(state) {
+    return {
+      isHovering: !state.isHovering,
+    };
   }
 
   render() {
+    console.log(this.state.time);
+
     return (
       <>
-        <MDBEdgeHeader color="bg-red" className="sectionPage" />
+        <MDBEdgeHeader color="red darken-4" className="sectionPage" />
         <div className="mt-3 mb-5">
           <MDBFreeBird>
             <MDBRow>
@@ -59,9 +104,25 @@ class HomePage extends React.Component {
               >
                 <MDBCardBody className="text-center">
                   <h2 className="h2-responsive mb-4">
-                    <div className="clock">
-                      <h3>Coordinated Mars Time</h3>
-                      <div className="time mtc">
+                    <SemiCircleProgressBar
+                      percentage={(100 / 1477) * this.state.minutes}
+                    />
+                    <div
+                      onMouseOver={this.handleMouseHover} //need to find better solution
+                      onMouseLeave={this.handleMouseHover}
+                      className="clock"
+                    >
+                      <h3
+                        onMouseOver={this.handleMouseHover}
+                        onMouseLeave={this.handleMouseHover}
+                      >
+                        Coordinated Mars Time
+                      </h3>
+                      <div
+                        onMouseOver={this.handleMouseHover}
+                        onMouseLeave={this.handleMouseHover}
+                        className="time mtc"
+                      >
                         {this.state.time && this.state.time}
                       </div>
                     </div>
