@@ -1,14 +1,13 @@
 <p align="center">
   <a href="https://www.aichner-christian.com/" target="_blank" rel="noopener noreferrer">
-    <img src="https://github.com/aichner-industries/marstime/blob/master/src/assets/react-mdb-firebase.jpg?raw=true" alt="Agency Logo" height="150" style="max-width: 100%" />
+    <img src="https://github.com/aichner-industries/marstime/blob/add-cleanup-aa1/src/assets/content/marstime.jpg?raw=true" alt="Marstime Logo" height="80px" style="max-width: 100%" />
   </a>
 </p>
 
-<h3 align="center">Official React + MDB + Firebase Template</h3>
+<h3 align="center">MARSTIME - Built for future explorers and inhabitants</h3>
 
 <p align="center">
-  This repository serves as an entry point for future React MDB Basic projects of the
-  Advertisement Agency Christian Aichner and beyond.
+  Marstime aims to provide detailed sol, weather and other information for future inhabitants of Mars collonies.
   <br>
   <br>
   <a href="https://github.com/aichner-industries/marstime/issues/new?template=bug_report.md">Report bug</a>
