@@ -29,6 +29,9 @@ import {
 //> Mars Time helper
 import { getDate, getTime, getMinutes, getGeneral } from "./time";
 
+//> Mars Date helper
+import { Convert2Ls } from "./date.js";
+
 //> Images
 import logoImg from "../../../assets/content/marstime-white.png";
 
@@ -129,7 +132,14 @@ class HomePage extends React.Component {
           <MDBContainer>
             <MDBRow>
               <MDBCol md="12" className="mt-4">
-                <p className="text-center text-muted mb-1"></p>
+                <p className="text-center text-muted mb-1">
+                  <div className="clock border mb-4 py-3">
+                    <p className="lead h3-responsive font-weight-bold mb-0">
+                      {this.state.sol && this.state.sol}
+                    </p>
+                    <p className="lead text-muted mb-0">Today's date on Mars</p>
+                  </div>
+                </p>
               </MDBCol>
             </MDBRow>
           </MDBContainer>
