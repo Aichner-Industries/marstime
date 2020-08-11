@@ -56,6 +56,8 @@ class HomePage extends React.Component {
     setInterval(() => {
       this.setState({ minutes: getMinutes(), date: getDate() });
     }, 60000);
+
+    const marsTimeData = Convert2Ls();
   }
 
   init = () => {

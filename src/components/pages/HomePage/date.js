@@ -19,7 +19,7 @@ or if it is a multiple of 400 */
   return leap;
 }
 
-function Convert2Julian() {
+export function Convert2Julian() {
   let currentDate = new Date(),
     day = currentDate.getDate(),
     month = currentDate.getMonth() + 1,
@@ -68,10 +68,10 @@ function Convert2Julian() {
   return jDate;
 }
 
-function Convert2Ls() {
+export function Convert2Ls() {
   // Convert a Julian date to corresponding "sol" and "Ls"
-  let jDate;
   let sol;
+  let jDate;
   let ls;
   let martianYear;
   let martianMonth;
@@ -119,6 +119,11 @@ function Convert2Ls() {
   document.calendar.ls.value = Math.round(ls * 10) / 10;
   //document.calendar.sol.value=Math.round(sol*10)/10;
   document.calendar.sol.value = 1 + Math.floor(sol);*/
+
+  return {
+    month: martianMonth,
+    year: martianYear,
+  };
 }
 
 function Sol2Ls(sol) {
