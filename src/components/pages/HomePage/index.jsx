@@ -41,7 +41,13 @@ import "./HomePage.scss";
 
 //#region > Components
 class HomePage extends React.Component {
-  state = { minutes: 0 };
+  constructor(props) {
+    super(props);
+
+    this.handleMouseHover = this.handleMouseHover.bind(this);
+
+    this.state = { minutes: 0, isHovering: false };
+  }
 
   componentDidMount() {
     // Initial
@@ -56,8 +62,6 @@ class HomePage extends React.Component {
     setInterval(() => {
       this.setState({ minutes: getMinutes(), date: getDate() });
     }, 60000);
-
-    const marsTimeData = Convert2Ls();
   }
 
   init = () => {
@@ -65,18 +69,9 @@ class HomePage extends React.Component {
       time: getTime(),
       minutes: getMinutes(),
       date: getDate(),
+      ls: Convert2Ls(),
     });
   };
-
-  constructor(props) {
-    super(props);
-
-    this.handleMouseHover = this.handleMouseHover.bind(this);
-
-    this.state = {
-      isHovering: false,
-    };
-  }
 
   handleMouseHover() {
     this.setState(this.toggleHoverState);
@@ -136,9 +131,12 @@ class HomePage extends React.Component {
               <MDBCol md="12" className="mt-4">
                 <p className="text-center text-muted mb-1">
                   <div className="clock border mb-4 py-3">
-                    <p className="lead h3-responsive font-weight-bold mb-0">
-                      {this.state.sol && this.state.sol}
-                    </p>
+                    {this.state.ls && (
+                      <p className="lead h3-responsive font-weight-bold mb-0">
+                        {this.state.ls.day} / {this.state.ls.month} /{" "}
+                        {this.state.ls.year}
+                      </p>
+                    )}
                     <p className="lead text-muted mb-0">Today's date on Mars</p>
                   </div>
                 </p>

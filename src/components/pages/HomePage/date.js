@@ -123,6 +123,8 @@ export function Convert2Ls() {
   return {
     month: martianMonth,
     year: martianYear,
+    day: sol,
+    ls,
   };
 }
 
