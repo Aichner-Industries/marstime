@@ -113,6 +113,35 @@ export function Convert2Ls() {
   ls = Math.round(ls * 10) / 10;
   sol = 1 + Math.floor(sol);
 
+  const martianMonthNames = [
+    "Sagittarius",
+    "Dhanus",
+    "Capricornus",
+    "Makara",
+    "Aquarius",
+    "Kumbha",
+    "Pisces",
+    "Mina",
+    "Aries",
+    "Mesha",
+    "Taurus",
+    "Rishabha",
+    "Gemini",
+    "Mithuna",
+    "Cancer",
+    "Karka",
+    "Leo",
+    "Simha",
+    "Virgo",
+    "Kanya",
+    "Libra",
+    "Tula",
+    "Scorpius",
+    "Vrishika",
+  ];
+
+  const monthName = martianMonthNames[martianMonth - 1];
+
   //Display value with a maximum of 2 decimal digits
   /*document.martianYear.value = martianYear;
   document.calendar.martianMonth.value = martianMonth;
@@ -122,6 +151,7 @@ export function Convert2Ls() {
 
   return {
     month: martianMonth,
+    monthName,
     year: martianYear,
     day: sol,
     ls,

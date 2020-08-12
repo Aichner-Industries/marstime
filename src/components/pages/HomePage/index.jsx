@@ -133,8 +133,8 @@ class HomePage extends React.Component {
                   <div className="clock border mb-4 py-3">
                     {this.state.ls && (
                       <p className="lead h3-responsive font-weight-bold mb-0">
-                        {this.state.ls.day} / {this.state.ls.month} /{" "}
-                        {this.state.ls.year}
+                        {this.state.ls.day} / {this.state.ls.month}{" "}
+                        {this.state.ls.monthName} / {this.state.ls.year}
                       </p>
                     )}
                     <p className="lead text-muted mb-0">Today's date on Mars</p>
